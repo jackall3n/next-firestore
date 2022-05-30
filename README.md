@@ -26,8 +26,7 @@ yarn add next-firestore
 
 ```typescript jsx
 import admin from 'firebase-admin';
-import { FirestoreProvider } from 'next-firestore';
-import { useFirestoreApp } from "./FirestoreAppProvider";
+import { FirestoreProvider, useFirestoreApp } from 'next-firestore';
 
 // Create fetchers for collections and documents
 const fetchers = {
@@ -72,9 +71,8 @@ export default (props) => {
 ### Document
 
 ```typescript jsx
-import { FirestoreProvider } from 'next-firestore';
 import admin from 'firebase-admin';
-import { useFirestoreApp } from "./FirestoreAppProvider";
+import { FirestoreProvider, useFirestoreApp } from 'next-firestore';
 
 const fetchers = {
   project: getDocument('projects')
