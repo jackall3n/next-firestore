@@ -1,7 +1,7 @@
 {
   "name": "next-firestore",
   "description": "A library dedicated to supporting Firebase + server-side rendering",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "keywords": [
     "react",
@@ -23,7 +23,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/lodash": "^4.14.182",
-    "@types/react": "^18.0.9"
+    "@types/react": "^18.0.9",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "firebase": "^9.8.2",
