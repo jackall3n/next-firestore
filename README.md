@@ -36,6 +36,7 @@ const fetchers = {
 function Page() {
   const { query } = useRouter();
 
+  // Get client side data, and subscribe to live updates
   const [projects] = fetchers.projects.useData()
 
   return (
@@ -46,6 +47,7 @@ function Page() {
 }
 
 export default async function getServerSideProps(context) {
+  // Get server side data
   const projects = await fetchers.projects.get(admin);
 
   return {
