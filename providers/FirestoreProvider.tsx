@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext } from "react";
+import React, { createContext, PropsWithChildren, useContext } from "react";
 
 export type IFirestoreContextValue = any;
 export type IFirestoreContext = Record<string, IFirestoreContextValue>;

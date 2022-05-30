@@ -1,6 +1,7 @@
 import { firestore } from "firebase-admin";
 import { useCollection, useDocument } from "../hooks";
 import { serialize } from "./serialization";
+import { Firestore } from "@firebase/firestore";
 
 export function getCollection<T>(name: string) {
   return {
@@ -18,8 +19,8 @@ export function getCollection<T>(name: string) {
         }))
       }
     },
-    useData() {
-      const [data, reference] = useCollection<T>(name);
+    useData(db: Firestore) {
+      const [data, reference] = useCollection<T>(db, name);
 
       return [data, reference] as const;
     },
@@ -42,10 +43,10 @@ export function getDocument<T>(name: string) {
         })
       }
     },
-    useData(id: string) {
+    useData(db: Firestore, id: string) {
       const path = `${name}/${id}`;
 
-      const [data, reference] = useDocument<T>(path);
+      const [data, reference] = useDocument<T>(db, path);
 
       return [data, reference] as const;
     },

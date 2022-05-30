@@ -1,14 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { collection, CollectionReference, onSnapshot, query } from "@firebase/firestore";
+import { collection, CollectionReference, Firestore, onSnapshot, query } from "@firebase/firestore";
 import { pullAt } from "lodash";
 
 import { useDefaultValue, useFirestoreApp } from "../providers";
 import { IDocument } from "../types";
 import { deserialize } from "../utils";
 
-export function useCollection<T>(name: string) {
-  const app = useFirestoreApp();
-
+export function useCollection<T>(app: Firestore, name: string) {
   const defaultValue = useDefaultValue<IDocument<T>[]>(name, []);
 
   const [data, setData] = useState<IDocument<T>[]>(defaultValue.map(v => deserialize(app, v)));

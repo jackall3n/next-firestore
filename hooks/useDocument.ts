@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { doc, DocumentReference, onSnapshot } from "@firebase/firestore";
+import { doc, DocumentReference, Firestore, onSnapshot } from "@firebase/firestore";
 
 import { deserialize } from "../utils";
 import { useDefaultValue, useFirestoreApp } from "../providers";
 import { IDocument } from "../types";
 
-export function useDocument<T>(name: string) {
-  const app = useFirestoreApp();
-
+export function useDocument<T>(app: Firestore, name: string) {
   const defaultValue = useDefaultValue<IDocument<T>>(name);
 
   const [data, setData] = useState<IDocument<T>>(deserialize(app, defaultValue));
@@ -25,7 +23,7 @@ export function useDocument<T>(name: string) {
         reference,
         exists: snapshot.exists(),
         ...snapshot.data(),
-      })
+      } as any)
     });
   }, [reference]);
 
