@@ -22,7 +22,7 @@ yarn add next-firestore
 
 ## Usage
 
-### Basic
+### Collection
 
 ```typescript jsx
 import { FirestoreProvider } from 'next-firestore';
@@ -30,14 +30,12 @@ import admin from 'firebase-admin';
 import { useFirestoreApp } from "./FirestoreAppProvider";
 
 const fetchers = {
-  projects: getCollection('projects'),
-  project: getDocument('project')
+  projects: getCollection('projects')
 }
 
 function Page() {
   const { query } = useRouter();
 
-  const [project] = fetchers.project.useData(query.id)
   const [projects] = fetchers.projects.useData()
 
   return (
@@ -48,16 +46,58 @@ function Page() {
 }
 
 export default async function getServerSideProps(context) {
-  const id = context.query.id;
-
-  const project = await fetchers.project.get(id, admin);
   const projects = await fetchers.projects.get(admin);
 
   return {
     props: {
       firebase: {
-        ...project,
         ...projects
+      }
+    }
+  }
+}
+
+export default (props) => {
+  return (
+    <FirestoreProvider value={props.firebase}>
+      <Page />
+    </FirestoreProvider>
+  )
+}
+```
+
+### Document
+
+```typescript jsx
+import { FirestoreProvider } from 'next-firestore';
+import admin from 'firebase-admin';
+import { useFirestoreApp } from "./FirestoreAppProvider";
+
+const fetchers = {
+  project: getDocument('project')
+}
+
+function Page() {
+  const { query } = useRouter();
+
+  const [project] = fetchers.project.useData(query.id)
+
+  return (
+    <div>
+      {project.name}
+    </div>
+  )
+}
+
+export default async function getServerSideProps(context) {
+  const id = context.query.id;
+
+  const project = await fetchers.project.get(id, admin);
+
+  return {
+    props: {
+      firebase: {
+        ...project,
       }
     }
   }
