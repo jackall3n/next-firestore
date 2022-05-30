@@ -74,7 +74,7 @@ import admin from 'firebase-admin';
 import { useFirestoreApp } from "./FirestoreAppProvider";
 
 const fetchers = {
-  project: getDocument('project')
+  project: getDocument('projects')
 }
 
 function Page() {
