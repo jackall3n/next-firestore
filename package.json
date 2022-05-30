@@ -1,0 +1,36 @@
+{
+  "name": "next-firestore",
+  "description": "A library dedicated to supporting Firebase + server-side rendering",
+  "version": "1.9.0",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "next",
+    "firestore",
+    "firebase",
+    "hooks",
+    "SSR",
+    "server-side rendering"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "yarn build"
+  },
+  "repository": "https://github.com/jackall3n/next-firestore",
+  "homepage": "https://github.com/jackall3n/next-firestore#readme",
+  "readme": "https://github.com/jackall3n/next-firestore#readme",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "@types/react": "^18.0.9"
+  },
+  "dependencies": {
+    "firebase": "^9.8.2",
+    "firebase-admin": "^10.2.0",
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0"
+  }
+}
