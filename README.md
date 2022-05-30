@@ -25,10 +25,11 @@ yarn add next-firestore
 ### Collection
 
 ```typescript jsx
-import { FirestoreProvider } from 'next-firestore';
 import admin from 'firebase-admin';
+import { FirestoreProvider } from 'next-firestore';
 import { useFirestoreApp } from "./FirestoreAppProvider";
 
+// Create fetchers for collections and documents
 const fetchers = {
   projects: getCollection('projects')
 }
