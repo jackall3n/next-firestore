@@ -25,7 +25,7 @@ yarn add next-firestore
 ### Basic
 
 ```typescript jsx
-import useQuery from 'next-firestore';
+import { FirestoreProvider } from 'next-firestore';
 import admin from 'firebase-admin';
 import { useFirestoreApp } from "./FirestoreAppProvider";
 
