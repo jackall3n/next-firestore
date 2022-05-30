@@ -22,7 +22,7 @@ yarn add next-firestore
 
 ## Setup
 
-### _app.
+### _app.js
 ```typescript jsx
 import { getFirestore } from "@firebase/firestore";
 import { FirestoreAppProvider } from "next-firestore";
