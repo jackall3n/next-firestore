@@ -35,6 +35,9 @@ const fetchers = {
 }
 
 function Page() {
+  const { query } = useRouter();
+
+  const [project] = fetchers.project.useData(query.id)
   const [projects] = fetchers.projects.useData()
 
   return (
@@ -44,12 +47,16 @@ function Page() {
   )
 }
 
-export default async function getServerSideProps() {
+export default async function getServerSideProps(context) {
+  const id = context.query.id;
+
+  const project = await fetchers.project.get(id, admin);
   const projects = await fetchers.projects.get(admin);
 
   return {
     props: {
       firebase: {
+        ...project,
         ...projects
       }
     }
