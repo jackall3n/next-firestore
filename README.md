@@ -20,6 +20,26 @@ npm install next-firestore
 yarn add next-firestore
 ```
 
+## Setup
+
+### _app.
+```typescript jsx
+import { getFirestore } from "@firebase/firestore";
+import { FirestoreAppProvider } from "next-firestore";
+
+const app = getFirestore()
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <FirestoreAppProvider app={app}>
+      <Component {...pageProps} />
+    </FirestoreAppProvider>
+  )
+}
+
+export default MyApp
+```
+
 ## Usage
 
 ### Collection
