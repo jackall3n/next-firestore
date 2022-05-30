@@ -54,8 +54,6 @@ const fetchers = {
 }
 
 function Page() {
-  const { query } = useRouter();
-
   // Get client side data, and subscribe to live updates
   const [projects] = fetchers.projects.useData()
 
